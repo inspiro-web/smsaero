@@ -11,7 +11,9 @@
     ],
     "require": {
         "php" : "^7.2.5",
-        "guzzlehttp/guzzle": "^6.3"
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/support": "^7.0"
     },
     "require-dev": {
         "laravel/framework": "^7.0"
@@ -19,6 +21,16 @@
     "autoload": {
         "psr-4": {
             "SMSAero\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SMSAero\\SMSAeroServiceProvider"
+            ],
+            "aliases": {
+                "SMSAero": "SMSAero\\SMSAero"
+            }
         }
     },
     "minimum-stability": "dev",
