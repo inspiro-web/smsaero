@@ -6,27 +6,45 @@ use Illuminate\Support\Facades\Http;
 
 class API
 {
-    protected $username;
-    protected $password;
+    protected static $config;
 
-    private $gate = "gate.smsaero.ru/v2";
-
-    public function __construct($username, $password)
+    /**
+     * @param $name
+     * @param $arguments
+     */
+    public static function __callStatic($name, $arguments)
     {
-        $this->username = $username;
-        $this->password = $password;
+        if(self::$config == null)
+        {
+            self::$config = [
+                'username' => config('smsaero.username'),
+                'password' => config('smsaero.password'),
+                'gate' => config('smsaero.gate')
+            ];
+        }
     }
+
+/*
+    protected static function getConfig()
+    {
+        if(self::$config == null)
+        {
+            self::$config = [
+                'username' => config('smsaero.username'),
+                'password' => config('smsaero.password'),
+                'gate' => config('smsaero.gate')
+            ];
+        }
+
+        return self::$config;
+    }*/
 
     /**
      * @return array
      */
-    public function auth(string $username, string $password)
+    public static function auth()
     {
-        if(!$this->username)
-            $response = Http::get("https://" . $username . ":" . $password . "@" . $this->gate . "/auth");
-        else
-            $response = Http::get("https://" . $this->username . ":" . $this->password . "@" . $this->gate . "/auth");
-
+        $response = Http::get("https://" . self::$config['username'] . ":" . self::$config['password'] . "@" . self::$config['gate'] . "/auth");
         return $response->json();
     }
 }

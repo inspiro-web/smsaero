@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Class SMSAero
  * @package SMSAero
- * @method \SMSAero\API auth(string $username, string $password)
+ * @method static \SMSAero\API auth()
+ * @see API
  */
 class SMSAero extends Facade
 {
