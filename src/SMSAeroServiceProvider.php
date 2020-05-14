@@ -13,11 +13,18 @@ class SMSAeroServiceProvider extends ServiceProvider
 
     public function boot()
     {
-
+        $this->publishConfig();
     }
 
     protected function registerSmsAeroSingleton()
     {
         $this->app->singleton('smsaero', SMSAeroManager::class);
+    }
+
+    protected function publishConfig()
+    {
+        $this->publishes([
+            __DIR__.'config/smsaero.php' => config_path('smsaero.php'),
+        ]);
     }
 }
