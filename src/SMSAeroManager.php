@@ -4,6 +4,11 @@ namespace SMSAero;
 
 use Illuminate\Foundation\Application;
 
+/**
+ * Class SMSAeroManager
+ * @package SMSAero
+ * @method array auth(string $username, string $password)
+ */
 class SMSAeroManager
 {
     protected $container;
@@ -11,16 +16,5 @@ class SMSAeroManager
     public function __construct()
     {
         $this->container = app();
-    }
-
-    /**
-     * @param $username
-     * @param $password
-     * @return array
-     */
-    public function callAuth($username, $password)
-    {
-        $api = new API($username, $password);
-        return $api->auth();
     }
 }
