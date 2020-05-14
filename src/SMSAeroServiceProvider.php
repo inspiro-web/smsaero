@@ -24,7 +24,7 @@ class SMSAeroServiceProvider extends ServiceProvider
     protected function publishConfig()
     {
         $this->publishes([
-            __DIR__.'config/smsaero.php' => config_path('smsaero.php'),
+            __DIR__.'/config/smsaero.php' => config_path('smsaero.php'),
         ], 'smsaero-config');
     }
 }
