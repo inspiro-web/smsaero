@@ -4,6 +4,11 @@ namespace SMSAero;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * Class SMSAero
+ * @package SMSAero
+ * @method \SMSAero\API auth(string $username, string $password)
+ */
 class SMSAero extends Facade
 {
     /**
