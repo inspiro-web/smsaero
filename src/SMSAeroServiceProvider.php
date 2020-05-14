@@ -25,6 +25,6 @@ class SMSAeroServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'config/smsaero.php' => config_path('smsaero.php'),
-        ]);
+        ], 'smsaero-config');
     }
 }
