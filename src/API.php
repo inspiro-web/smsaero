@@ -20,9 +20,13 @@ class API
     /**
      * @return array
      */
-    public function auth()
+    public function auth(string $username, string $password)
     {
-        $response = Http::get("https://" . $this->username . ":" . $this->password . "@" . $this->gate . "/auth");
+        if(!$this->username)
+            $response = Http::get("https://" . $username . ":" . $password . "@" . $this->gate . "/auth");
+        else
+            $response = Http::get("https://" . $this->username . ":" . $this->password . "@" . $this->gate . "/auth");
+
         return $response->json();
     }
 }

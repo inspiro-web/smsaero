@@ -7,7 +7,7 @@ use Illuminate\Foundation\Application;
 /**
  * Class SMSAeroManager
  * @package SMSAero
- * @method array auth(string $username, string $password)
+ * @method \SMSAero\API auth(string $username, string $password)
  */
 class SMSAeroManager
 {
