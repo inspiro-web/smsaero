@@ -1,0 +1,26 @@
+{
+    "name": "inspiro/smsaero",
+    "description": "Library to interact with SMSAero API",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Inspiro Web",
+            "email": "mail@inspiro.site"
+        }
+    ],
+    "require": {
+        "php" : "^7.2.5",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+        "laravel/framework": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SMSAero\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
