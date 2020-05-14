@@ -8,6 +8,14 @@ class API
 {
     protected static $config;
 
+    public function __get($name)
+    {
+        if($name == self::$config)
+            return self::$config != null ? self::$config : self::getConfig();
+
+        return $name;
+    }
+
     /**
      * @param $name
      * @param $arguments
@@ -18,7 +26,10 @@ class API
             self::getConfig();
     }
 
-    public static function getConfig()
+    /**
+     * @return array
+     */
+    protected static function getConfig()
     {
         if(self::$config == null)
         {
@@ -28,6 +39,8 @@ class API
                 'gate' => config('smsaero.gate')
             ];
         }
+
+        return self::$config;
     }
 
     /**
@@ -35,6 +48,8 @@ class API
      */
     public static function auth()
     {
+        if(self::$config == null) self::getConfig();
+
         $response = Http::get("https://" . self::$config['username'] . ":" . self::$config['password'] . "@" . self::$config['gate'] . "/auth");
         return $response->json();
     }

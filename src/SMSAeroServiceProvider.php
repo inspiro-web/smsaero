@@ -19,7 +19,6 @@ class SMSAeroServiceProvider extends ServiceProvider
     protected function registerSmsAeroSingleton()
     {
         $this->app->singleton('smsaero', API::class);
-        API::getConfig();
     }
 
     protected function publishConfig()
