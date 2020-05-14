@@ -100,9 +100,7 @@ class API
         if ($dateSend != null) $data['dateSend'] = $dateSend;
         if ($callbackUrl != null) $data['callbackUrl'] = $callbackUrl;
 
-        $response = Http::post(self::getURL() . "/sms/send", $data);
-
-        return $response->json();
+        return Http::post(self::getURL() . "/sms/send", $data)->json();
     }
 
     /**
