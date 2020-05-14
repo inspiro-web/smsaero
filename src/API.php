@@ -15,17 +15,10 @@ class API
     public static function __callStatic($name, $arguments)
     {
         if(self::$config == null)
-        {
-            self::$config = [
-                'username' => config('smsaero.username'),
-                'password' => config('smsaero.password'),
-                'gate' => config('smsaero.gate')
-            ];
-        }
+            self::getConfig();
     }
 
-/*
-    protected static function getConfig()
+    public static function getConfig()
     {
         if(self::$config == null)
         {
@@ -35,9 +28,7 @@ class API
                 'gate' => config('smsaero.gate')
             ];
         }
-
-        return self::$config;
-    }*/
+    }
 
     /**
      * @return array
